@@ -1,5 +1,5 @@
 
 
 export const Repo = () => {
-    return <div>Repo</div>
+    return <div>Repos</div>
 }
