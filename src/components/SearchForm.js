@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const SearchForm = () => {
+export const SearchForm = ({handleApiTrigger}) => {
     const [userName, setUserName] = useState("")
     const [error, setError] = useState(false)
 
@@ -20,7 +20,7 @@ export const SearchForm = () => {
             setError(true)
         } else {setError(false)}
         // trigger API request
-
+        handleApiTrigger(userName)
     };
 
     return (
