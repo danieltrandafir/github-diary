@@ -1,7 +1,12 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .repo-card {
-    width: 18rem;
+  width: 18rem;
+}
+.nav-link {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
