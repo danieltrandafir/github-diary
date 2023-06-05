@@ -1,4 +1,5 @@
 import Container from "react-bootstrap/Container";
+import axios from "axios";
 
 import { Banner } from "../components/Banner";
 import { SearchForm } from "../components/SearchForm";
@@ -21,11 +22,17 @@ export const Home = () => {
   // if url is valid will fetch data
   useEffect(() => {
     if (url) {
-      const fetchData = async () => {
-        const { data } = await axios.get(url);
-      };
+      try {
+        const fetchData = async () => {
+          const { data } = await axios.get(url);
+          setRepos(data);
+        };
 
-      fetchData();
+        fetchData();
+      } catch {
+        setError(true);
+        setRepos();
+      }
     }
   }, [url]);
   console.log(url);
