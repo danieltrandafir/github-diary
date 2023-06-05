@@ -3,14 +3,26 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export const SearchForm = ({ handleApiTrigger }) => {
-  const [userName, setUsername] = useState();
+  const [userName, setUsername] = useState("");
+  const [error, setError] = useState(false);
 
-  const handleOnChange = (currentTarget) => {
+  const handleOnChange = ({ currentTarget }) => {
     setUsername(currentTarget.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!userName) {
+      setError(true);
+    } else {
+      setError(false);
+      // trigger API request
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Control
           type="text"
@@ -18,9 +30,11 @@ export const SearchForm = ({ handleApiTrigger }) => {
           value={userName}
           onChange={handleOnChange}
         />
-        <Form.Text className="text-danger">
-          Please enter a valid GitHub Username.
-        </Form.Text>
+        {error && (
+          <Form.Text className="text-danger">
+            Please enter a valid GitHub Username.
+          </Form.Text>
+        )}
       </Form.Group>
 
       <Form.Group className="mb-3 text-center">
