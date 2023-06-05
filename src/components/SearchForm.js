@@ -17,7 +17,7 @@ export const SearchForm = ({ handleApiTrigger }) => {
       setError(true);
     } else {
       setError(false);
-      // trigger API request
+      handleApiTrigger(userName);
     }
   };
 
